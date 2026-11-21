@@ -1,0 +1,36 @@
+---
+import { galleryItems } from '../data/siteData';
+---
+<!-- =========================================================================
+     SECTION 6: GALERI PORTOFOLIO (Interactive Lightbox Gallery)
+     ========================================================================= -->
+<section id="galeri" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-nusa-blue">Bukti Dokumentasi Lapangan</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-nusa-dark mt-2">
+        Ribuan Senyum Telah Kami Antar Menjelajah Dunia
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-2">
+        Lihat keseruan perjalanan rombongan institusi, sekolah, dan keluarga yang telah mempercayakan momen berharga mereka bersama <strong>@nusatravel.idn</strong>. Klik foto untuk memperbesar.
+      </p>
+    </div>
+
+    <!-- Interactive Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {galleryItems.map((item) => (
+        <div onclick={`openLightbox('${item.full}', '${item.caption}')`} 
+             class="gallery-item group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-md">
+          <img src={item.thumb} 
+               alt={item.alt} 
+               loading="lazy"
+               class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-nusa-dark/90 via-nusa-dark/20 to-transparent opacity-90 flex flex-col justify-end p-5">
+            <span class="text-[11px] font-bold text-nusa-gold uppercase">{item.location}</span>
+            <h4 class="text-white font-bold text-sm">{item.title}</h4>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "PT Nusa Tour & Travel Indonesia | Partner Resmi Perjalanan 3 Negara",
+  description = "Partner perjalanan resmi dan terpercaya untuk destinasi Malaysia, Singapura, dan Thailand. Spesialis Study Tour, PKL Internasional, Corporate Gathering, dan Private Trip."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Google Fonts: Playfair Display (for Editorial/SkyStructure Headings) & Plus Jakarta Sans (Clean Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-nusa-gold selection:text-nusa-dark">
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  /* Custom visual refinements matching SkyStructure reference */
+  .hero-bg {
+    background-image: 
+      linear-gradient(to right, rgba(6, 18, 38, 0.94) 0%, rgba(6, 18, 38, 0.82) 48%, rgba(6, 18, 38, 0.35) 100%),
+      linear-gradient(to top, #061226 0%, transparent 25%),
+      url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1920&q=85');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Subtle pulse for Floating WhatsApp */
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  }
+  .wa-pulse {
+    animation: pulse-ring 2.2s infinite;
+  }
+</style>

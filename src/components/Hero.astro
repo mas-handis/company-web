@@ -1,0 +1,91 @@
+---
+---
+<!-- ==========================================
+     SECTION 1: HERO BANNER (SkyStructure Style)
+     ========================================== -->
+<section id="beranda" class="relative hero-bg pt-32 pb-24 lg:pt-40 lg:pb-44 text-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Left Column: Hero Copywriting -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Official Legal Badge -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm">
+          <span class="px-2 py-0.5 rounded-full bg-nusa-gold text-nusa-dark font-extrabold text-[11px]">RESMI</span>
+          <span class="text-slate-100 font-medium">PT Nusa Tour & Travel Indonesia • 🇲🇾 🇸🇬 🇹🇭</span>
+        </div>
+
+        <!-- Headline (Matching Serif Architectural Look) -->
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-[54px] font-bold leading-[1.15] tracking-tight text-white">
+          Rencanakan Perjalanan Tanpa Beban. <span class="text-nusa-gold italic font-normal">Kami Urus Semuanya,</span> Anda Tinggal Menikmati Momennya.
+        </h1>
+
+        <!-- Sub-headline -->
+        <p class="text-slate-200 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+          Partner perjalanan resmi dan terpercaya untuk destinasi <strong>Malaysia, Singapura, dan Thailand</strong>. Spesialis menangani <em>Study Tour</em>, <em>PKL Internasional</em>, <em>Corporate Gathering</em>, dan <em>Private Trip</em> dengan layanan VIP.
+        </p>
+
+        <!-- Primary & Secondary CTAs -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <button onclick="triggerWA('Hero Banner - Konsultasi Trip Gratis')" class="bg-nusa-blue hover:bg-blue-500 text-white font-bold px-7 py-4 rounded-xl shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-base">
+            <i class="fa-brands fa-whatsapp text-xl text-emerald-300"></i>
+            <span>Konsultasi Trip Gratis</span>
+          </button>
+          
+          <button onclick="openBrochureModal()" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/25 font-semibold px-6 py-4 rounded-xl transition flex items-center justify-center gap-3 text-base">
+            <i class="fa-regular fa-file-pdf text-nusa-gold text-lg"></i>
+            <span>Unduh Company Profile</span>
+          </button>
+        </div>
+
+        <!-- Quick Highlights -->
+        <div class="pt-4 grid grid-cols-3 gap-4 border-t border-white/15 max-w-lg text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-nusa-gold"></i>
+            <span>Izin Resmi NIB</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-nusa-gold"></i>
+            <span>Tim Lokal Malaysia</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-nusa-gold"></i>
+            <span>Bebas Biaya Tersembunyi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Featured Group Photo Card at Petronas Twin Towers -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-2xl bg-nusa-navy/80 p-3 glass-border shadow-2xl backdrop-blur-md">
+          <div class="relative rounded-xl overflow-hidden aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Rombongan Nusa Tour & Travel di Menara Kembar Petronas Malaysia" 
+                 class="w-full h-full object-cover"
+                 data-fallback-src="https://placehold.co/800x600/0B1E3B/F59E0B?text=Menara+Petronas+Malaysia">
+            <div class="absolute inset-0 bg-gradient-to-t from-nusa-dark via-transparent to-transparent"></div>
+            
+            <!-- Country Pills -->
+            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-nusa-dark/80 backdrop-blur-md text-white text-xs font-semibold">🇲🇾 Malaysia</span>
+              <span class="px-2.5 py-1 rounded-md bg-nusa-dark/80 backdrop-blur-md text-white text-xs font-semibold">🇸🇬 Singapore</span>
+              <span class="px-2.5 py-1 rounded-md bg-nusa-dark/80 backdrop-blur-md text-white text-xs font-semibold">🇹🇭 Thailand</span>
+            </div>
+
+            <!-- Bottom Overlay Caption -->
+            <div class="absolute bottom-3 left-3 right-3 bg-nusa-dark/90 backdrop-blur-md p-3.5 rounded-xl border border-white/10 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] uppercase tracking-wider text-nusa-gold font-bold block">Dokumentasi Nyata</span>
+                <p class="text-white text-xs sm:text-sm font-semibold">Safari Edukasi & PKL Internasional - KLCC</p>
+              </div>
+              <a href="#galeri" aria-label="Lihat Galeri" class="w-9 h-9 rounded-lg bg-nusa-gold text-nusa-dark flex items-center justify-center hover:bg-amber-400 transition shrink-0">
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

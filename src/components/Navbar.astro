@@ -1,0 +1,57 @@
+---
+---
+<!-- TOP NAVIGATION BAR (Matching Reference Layout) -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-nusa-dark/85 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-11 h-11 rounded-xl bg-white flex flex-col items-center justify-center shadow-md border-2 border-nusa-gold group-hover:scale-105 transition">
+        <span class="font-extrabold text-nusa-navy text-xs tracking-tighter leading-none">NUSA</span>
+        <span class="text-[8px] font-bold text-nusa-gold tracking-widest uppercase mt-0.5">Travel</span>
+      </div>
+      <div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-white font-extrabold text-lg tracking-wide">NUSA</span>
+          <span class="text-sky-400 font-light text-lg tracking-wide">TOUR & TRAVEL</span>
+        </div>
+        <p class="text-[10px] text-slate-300 tracking-wider uppercase -mt-1">PT Nusa Tour & Travel Indonesia</p>
+      </div>
+    </a>
+
+    <!-- Desktop Menu Links -->
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-200">
+      <a href="#beranda" class="text-white border-b-2 border-nusa-gold pb-1">Beranda</a>
+      <a href="#legalitas" class="hover:text-nusa-gold transition">Tentang & Legalitas</a>
+      <a href="#layanan" class="hover:text-nusa-gold transition">Layanan</a>
+      <a href="#paket" class="hover:text-nusa-gold transition">Paket 3 Negara</a>
+      <a href="#galeri" class="hover:text-nusa-gold transition">Galeri</a>
+      <a href="#testimoni" class="hover:text-nusa-gold transition">Testimoni</a>
+    </nav>
+
+    <!-- Top CTA Button -->
+    <div class="hidden md:flex items-center gap-3">
+      <button onclick="triggerWA('Navigasi Atas - Konsultasi Cepat')" class="bg-nusa-blue hover:bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-lg shadow-blue-600/30 transition flex items-center gap-2">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span>Hubungi Kami</span>
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger Button -->
+    <button id="mobile-menu-btn" aria-label="Buka Menu Navigasi" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none">
+      <i class="fa-solid fa-bars text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-nusa-navy border-b border-white/10 px-4 pt-3 pb-6 space-y-3">
+    <a href="#beranda" class="block text-white font-medium py-2 border-b border-white/5">Beranda</a>
+    <a href="#legalitas" class="block text-slate-200 hover:text-nusa-gold py-2 border-b border-white/5">Tentang & Legalitas</a>
+    <a href="#layanan" class="block text-slate-200 hover:text-nusa-gold py-2 border-b border-white/5">Layanan Kami</a>
+    <a href="#paket" class="block text-slate-200 hover:text-nusa-gold py-2 border-b border-white/5">Paket Populer</a>
+    <a href="#galeri" class="block text-slate-200 hover:text-nusa-gold py-2 border-b border-white/5">Galeri Dokumentasi</a>
+    <a href="#testimoni" class="block text-slate-200 hover:text-nusa-gold py-2">Testimoni Klien</a>
+    <button onclick="triggerWA('Menu Mobile')" class="w-full bg-nusa-gold text-nusa-dark font-bold py-3 rounded-lg flex items-center justify-center gap-2 mt-2">
+      <i class="fa-brands fa-whatsapp"></i> Konsultasi Trip Gratis
+    </button>
+  </div>
+</header>

@@ -1,0 +1,253 @@
+---
+---
+<!-- Analytics Tracking Status Toast (Simulated GA4 & Meta Pixel Visual Feedback) -->
+<div id="analytics-toast" class="fixed top-20 right-5 z-50 hidden bg-nusa-dark/95 text-white px-4 py-3 rounded-xl shadow-2xl border border-nusa-gold/40 flex items-center gap-3 text-xs transition-all duration-300">
+  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+  <div>
+    <p class="font-bold text-nusa-gold" id="toast-title">Event Tracked</p>
+    <p class="text-slate-300" id="toast-desc">GA4 & Meta Pixel Event Fired</p>
+  </div>
+</div>
+
+<!-- =========================================================================
+     FLOATING WHATSAPP CTA BUTTON (Always visible bottom-right)
+     ========================================================================= -->
+<button onclick="triggerWA('Floating Button Kanan Bawah')" 
+        aria-label="Konsultasi WhatsApp"
+        class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-2xl flex items-center gap-3 group transition-all duration-300 wa-pulse">
+  <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+  <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-xs sm:text-sm font-bold pr-0 group-hover:pr-2">
+    Chat Admin NUSA
+  </span>
+</button>
+
+<!-- =========================================================================
+     MODAL 1: LEAD MAGNET / UNDUH COMPANY PROFILE PDF
+     ========================================================================= -->
+<div id="brochure-modal" class="fixed inset-0 z-50 hidden bg-nusa-dark/80 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative animate-fadeIn">
+    <button onclick="closeBrochureModal()" aria-label="Tutup Modal" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <div class="w-12 h-12 rounded-xl bg-nusa-navy text-nusa-gold flex items-center justify-center mb-4 text-xl">
+      <i class="fa-regular fa-file-pdf"></i>
+    </div>
+    <h3 class="text-xl font-bold text-nusa-dark">Unduh Company Profile & Katalog</h3>
+    <p class="text-xs text-slate-500 mt-1 mb-5">
+      Cocok untuk lampiran pengajuan rapat sekolah, kampus, maupun perusahaan. Dilengkapi salinan NIB & estimasi paket 3 Negara.
+    </p>
+
+    <form id="brochure-form" class="space-y-3.5">
+      <div>
+        <label for="lead-name" class="block text-xs font-bold text-slate-700 mb-1">Nama Anda / Koordinator</label>
+        <input type="text" id="lead-name" required placeholder="Contoh: Bapak Ahmad" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nusa-blue">
+      </div>
+      <div>
+        <label for="lead-org" class="block text-xs font-bold text-slate-700 mb-1">Asal Sekolah / Instansi / Keluarga</label>
+        <input type="text" id="lead-org" required placeholder="Contoh: SMA Negeri 1 / PT Maju Jaya" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nusa-blue">
+      </div>
+      <div>
+        <label for="lead-type" class="block text-xs font-bold text-slate-700 mb-1">Rencana Jenis Perjalanan</label>
+        <select id="lead-type" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nusa-blue bg-white">
+          <option value="Safari Edukasi / PKL Internasional">Safari Edukasi / PKL Internasional</option>
+          <option value="Tour 3 Negara (Malaysia-Singapura-Thailand)">Tour 3 Negara (Malaysia-Singapura-Thailand)</option>
+          <option value="Corporate / Instansi Gathering">Corporate / Instansi Gathering</option>
+          <option value="Private Family Trip">Private Family Trip</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-nusa-blue hover:bg-blue-600 text-white font-bold py-3.5 rounded-xl text-sm shadow-lg transition flex items-center justify-center gap-2 mt-2">
+        <i class="fa-solid fa-download"></i>
+        <span>Unduh PDF Sekarang & Kirim ke WA</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL 2: INTERACTIVE GALLERY LIGHTBOX
+     ========================================================================= -->
+<div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-nusa-dark/95 backdrop-blur-md flex items-center justify-center p-4">
+  <div id="lightbox-content" class="max-w-4xl w-full relative">
+    <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-nusa-gold text-sm font-bold flex items-center gap-1.5">
+      <span>Tutup</span> <i class="fa-solid fa-circle-xmark text-xl"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="Preview Dokumentasi" class="w-full max-h-[78vh] object-contain rounded-xl border border-white/15 shadow-2xl">
+    <p id="lightbox-caption" class="text-center text-white text-sm font-medium mt-3"></p>
+  </div>
+</div>
+
+<!-- =========================================================================
+     JAVASCRIPT: INTERACTIVITY, WA PRE-FILLED GENERATOR, ANALYTICS TRACKING
+     ========================================================================= -->
+<script is:inline>
+  // Official WhatsApp Number from NUSA Tour & Travel Poster
+  const NUSA_WA_NUMBER = "628558047049";
+
+  // Attach fallback image handler
+  document.querySelectorAll('img[data-fallback-src]').forEach((img) => {
+    img.addEventListener('error', function () {
+      const fallback = this.getAttribute('data-fallback-src');
+      if (fallback && this.src !== fallback) {
+        this.src = fallback;
+      }
+    });
+  });
+
+  // Mobile Menu Toggle
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Stop click propagation inside lightbox content
+  const lightboxContent = document.getElementById('lightbox-content');
+  if (lightboxContent) {
+    lightboxContent.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  // Simulated GA4 & Meta Pixel Event Tracker Notification
+  window.trackConversionEvent = function (eventName, eventDetail) {
+    const toast = document.getElementById('analytics-toast');
+    const title = document.getElementById('toast-title');
+    const desc = document.getElementById('toast-desc');
+
+    if (toast && title && desc) {
+      title.textContent = `GA4 & Pixel: ${eventName}`;
+      desc.textContent = eventDetail;
+      toast.classList.remove('hidden');
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3200);
+    }
+  };
+
+  // Trigger Pre-filled WhatsApp Message
+  window.triggerWA = function (sourceSection) {
+    window.trackConversionEvent('Lead_WhatsApp_Click', `Sumber: ${sourceSection}`);
+    
+    const message = `Halo Admin *PT Nusa Tour & Travel Indonesia* 👋\n\nSaya tertarik untuk konsultasi rencana perjalanan (*${sourceSection}*).\n\nBoleh minta informasi paket dan estimasi penawarannya? Terima kasih.`;
+    const encodedMsg = encodeURIComponent(message);
+    window.open(`https://wa.me/${NUSA_WA_NUMBER}?text=${encodedMsg}`, '_blank');
+  };
+
+  // Filter Package Tabs
+  window.filterPackages = function (category) {
+    const cards = document.querySelectorAll('.pkg-card');
+    const tabs = document.querySelectorAll('.pkg-tab');
+
+    tabs.forEach(t => {
+      t.classList.remove('bg-nusa-navy', 'text-white');
+      t.classList.add('bg-white', 'text-slate-700');
+    });
+
+    const activeTab = document.getElementById(`tab-${category}`);
+    if (activeTab) {
+      activeTab.classList.remove('bg-white', 'text-slate-700');
+      activeTab.classList.add('bg-nusa-navy', 'text-white');
+    }
+
+    cards.forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  };
+
+  // Company Profile Modal Controls
+  window.openBrochureModal = function () {
+    window.trackConversionEvent('Open_Company_Profile_Modal', 'Lead Magnet Triggered');
+    const modal = document.getElementById('brochure-modal');
+    if (modal) modal.classList.remove('hidden');
+  };
+
+  window.closeBrochureModal = function () {
+    const modal = document.getElementById('brochure-modal');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  // Generate Printable / Downloadable Official Summary & Redirect to WA
+  window.handleBrochureDownload = function (e) {
+    e.preventDefault();
+    const nameEl = document.getElementById('lead-name');
+    const orgEl = document.getElementById('lead-org');
+    const typeEl = document.getElementById('lead-type');
+
+    const name = nameEl ? nameEl.value : '';
+    const org = orgEl ? orgEl.value : '';
+    const tripType = typeEl ? typeEl.value : '';
+
+    window.trackConversionEvent('Download_Company_Profile_PDF', `${org} - ${tripType}`);
+
+    // Generate downloadable Official Company Profile Deck summary file
+    const content = `====================================================================
+COMPANY PROFILE RESMI - PT NUSA TOUR & TRAVEL INDONESIA
+====================================================================
+Badan Hukum : PT Nusa Tour & Travel Indonesia
+Nomor NIB   : 2010260083763 (Terdaftar Resmi Pemerintah RI)
+Instagram   : @nusatravel.idn
+WhatsApp    : +62 855-8047-049
+Email       : nusatourtravelid@gmail.com
+
+FOKUS DESTINASI UTAMA:
+- Malaysia (Kuala Lumpur, Putrajaya, Genting Highlands, Melaka, Johor)
+- Singapura (Merlion Park, Gardens by the Bay, Sentosa Island, USS, Changi)
+- Thailand (Hat Yai, Songkhla, Bangkok, Phuket)
+
+LAYANAN UNGGULAN KAMI:
+1. Safari Edukasi, Study Tour Sekolah/Kampus & PKL Internasional
+2. Corporate & Instansi Gathering
+3. Private Trip Keluarga 3 Negara
+4. Konsultasi Perjalanan & Pembelian Tiket Pesawat (Perorangan & Grup)
+
+Diterbitkan khusus untuk pengajuan:
+Nama Pemohon : ${name}
+Instansi     : ${org}
+Program      : ${tripType}
+====================================================================`;
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Company_Profile_PT_Nusa_Tour_Travel_${org.replace(/\s+/g, '_')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    window.closeBrochureModal();
+
+    // Follow up via WhatsApp with pre-filled institution details
+    const waText = `Halo Tim *PT Nusa Tour & Travel Indonesia*,\n\nSaya *${name}* dari *${org}* baru saja mengunduh ringkasan Company Profile di website.\n\nMohon dikirimkan file PDF Katalog Lengkap & Proposal Resmi untuk program: *${tripType}*. Terima kasih.`;
+    window.open(`https://wa.me/${NUSA_WA_NUMBER}?text=${encodeURIComponent(waText)}`, '_blank');
+  };
+
+  const brochureForm = document.getElementById('brochure-form');
+  if (brochureForm) {
+    brochureForm.addEventListener('submit', window.handleBrochureDownload);
+  }
+
+  // Lightbox Controls
+  window.openLightbox = function (imgSrc, caption) {
+    window.trackConversionEvent('Gallery_View', caption);
+    const imgEl = document.getElementById('lightbox-img');
+    const capEl = document.getElementById('lightbox-caption');
+    const modal = document.getElementById('lightbox-modal');
+    if (imgEl) imgEl.src = imgSrc;
+    if (capEl) capEl.textContent = caption;
+    if (modal) modal.classList.remove('hidden');
+  };
+
+  window.closeLightbox = function () {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal) modal.classList.add('hidden');
+  };
+</script>
