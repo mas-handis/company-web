@@ -65,14 +65,21 @@
 </div>
 
 <!-- =========================================================================
-     MODAL 2: INTERACTIVE GALLERY LIGHTBOX
+     MODAL 2: INTERACTIVE GALLERY LIGHTBOX (Zero-Delay Progressive Loading)
      ========================================================================= -->
 <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-nusa-dark/95 backdrop-blur-md flex items-center justify-center p-4">
   <div id="lightbox-content" class="max-w-4xl w-full relative">
     <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-nusa-gold text-sm font-bold flex items-center gap-1.5">
       <span>Tutup</span> <i class="fa-solid fa-circle-xmark text-xl"></i>
     </button>
-    <img id="lightbox-img" src="" alt="Preview Dokumentasi" class="w-full max-h-[78vh] object-contain rounded-xl border border-white/15 shadow-2xl">
+    <div class="relative flex items-center justify-center min-h-[260px] sm:min-h-[420px]">
+      <!-- Subtle HD loading indicator shown only if full-res takes >100ms -->
+      <div id="lightbox-spinner" class="hidden absolute top-3 right-3 z-10 bg-nusa-dark/80 backdrop-blur-sm text-nusa-gold px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-2 border border-white/10">
+        <i class="fa-solid fa-circle-notch fa-spin"></i>
+        <span>HD</span>
+      </div>
+      <img id="lightbox-img" src="" alt="Preview Dokumentasi" decoding="async" class="w-full max-h-[78vh] object-contain rounded-xl border border-white/15 shadow-2xl transition-opacity duration-200">
+    </div>
     <p id="lightbox-caption" class="text-center text-white text-sm font-medium mt-3"></p>
   </div>
 </div>
@@ -83,6 +90,41 @@
 <script is:inline>
   // Official WhatsApp Number from NUSA Tour & Travel Poster
   const NUSA_WA_NUMBER = "628558047049";
+
+  // Preload cache for full-resolution gallery photos so opening is instant
+  const preloadedImages = new Map();
+
+  function preloadFullImage(url) {
+    if (!url || preloadedImages.has(url)) return preloadedImages.get(url);
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = url;
+    preloadedImages.set(url, img);
+    return img;
+  }
+
+  // Eagerly preload on hover/touchstart and when gallery scrolls into view
+  document.querySelectorAll('.gallery-item[data-full-src]').forEach((card) => {
+    const fullUrl = card.getAttribute('data-full-src');
+    if (!fullUrl) return;
+    card.addEventListener('mouseenter', () => preloadFullImage(fullUrl), { passive: true });
+    card.addEventListener('touchstart', () => preloadFullImage(fullUrl), { passive: true });
+  });
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    const gallerySection = document.getElementById('galeri');
+    if (gallerySection) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          document.querySelectorAll('.gallery-item[data-full-src]').forEach((card) => {
+            preloadFullImage(card.getAttribute('data-full-src'));
+          });
+          obs.disconnect();
+        }
+      }, { rootMargin: '400px' });
+      observer.observe(gallerySection);
+    }
+  }
 
   // Attach fallback image handler
   document.querySelectorAll('img[data-fallback-src]').forEach((img) => {
@@ -110,6 +152,14 @@
       e.stopPropagation();
     });
   }
+
+  // Close modals with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (window.closeLightbox) window.closeLightbox();
+      if (window.closeBrochureModal) window.closeBrochureModal();
+    }
+  });
 
   // Simulated GA4 & Meta Pixel Event Tracker Notification
   window.trackConversionEvent = function (eventName, eventDetail) {
@@ -235,19 +285,53 @@ Program      : ${tripType}
     brochureForm.addEventListener('submit', window.handleBrochureDownload);
   }
 
-  // Lightbox Controls
-  window.openLightbox = function (imgSrc, caption) {
+  // Lightbox Controls with Instant Thumbnail Preview & Progressive HD Swap
+  let activeLightboxUrl = '';
+  window.openLightbox = function (imgSrc, caption, thumbSrc) {
     window.trackConversionEvent('Gallery_View', caption);
+    activeLightboxUrl = imgSrc;
+
     const imgEl = document.getElementById('lightbox-img');
     const capEl = document.getElementById('lightbox-caption');
     const modal = document.getElementById('lightbox-modal');
-    if (imgEl) imgEl.src = imgSrc;
+    const spinner = document.getElementById('lightbox-spinner');
+
     if (capEl) capEl.textContent = caption;
+
+    if (imgEl) {
+      const cached = preloadFullImage(imgSrc);
+      // If full-res is already preloaded in browser memory, show it immediately
+      if (cached && cached.complete && cached.naturalWidth > 0) {
+        imgEl.src = imgSrc;
+        if (spinner) spinner.classList.add('hidden');
+      } else {
+        // Show already-loaded thumbnail immediately (0ms perceived delay), then swap when HD finishes
+        imgEl.src = thumbSrc || imgSrc;
+        if (spinner && thumbSrc && thumbSrc !== imgSrc) {
+          spinner.classList.remove('hidden');
+        }
+        if (cached) {
+          cached.onload = () => {
+            if (activeLightboxUrl === imgSrc) {
+              imgEl.src = imgSrc;
+              if (spinner) spinner.classList.add('hidden');
+            }
+          };
+          cached.onerror = () => {
+            if (spinner) spinner.classList.add('hidden');
+          };
+        }
+      }
+    }
+
     if (modal) modal.classList.remove('hidden');
   };
 
   window.closeLightbox = function () {
+    activeLightboxUrl = '';
     const modal = document.getElementById('lightbox-modal');
+    const spinner = document.getElementById('lightbox-spinner');
     if (modal) modal.classList.add('hidden');
+    if (spinner) spinner.classList.add('hidden');
   };
 </script>

@@ -19,11 +19,13 @@ import { galleryItems } from '../data/siteData';
     <!-- Interactive Gallery Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {galleryItems.map((item) => (
-        <div onclick={`openLightbox('${item.full}', '${item.caption}')`} 
+        <div onclick={`openLightbox('${item.full}', '${item.caption}', '${item.thumb}')`}
+             data-full-src={item.full}
              class="gallery-item group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-md">
           <img src={item.thumb} 
                alt={item.alt} 
                loading="lazy"
+               decoding="async"
                class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-nusa-dark/90 via-nusa-dark/20 to-transparent opacity-90 flex flex-col justify-end p-5">
             <span class="text-[11px] font-bold text-nusa-gold uppercase">{item.location}</span>

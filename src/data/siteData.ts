@@ -45,7 +45,7 @@ export const packages: PackageItem[] = [
     duration: '4 Hari 3 Malam',
     countries: '🇲🇾 Malaysia • 🇸🇬 Singapura',
     title: 'Paket Safari Edukasi & PKL Internasional',
-    image: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=700&q=80',
+    image: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=700&q=80&fm=webp',
     imageAlt: 'Safari Edukasi Malaysia Singapura',
     features: [
       'Kunjungan Sekolah / Kampus / Industri',
@@ -63,7 +63,7 @@ export const packages: PackageItem[] = [
     duration: '5 Hari 4 Malam',
     countries: '🇲🇾 Malaysia • 🇸🇬 Singapura • 🇹🇭 Thailand',
     title: 'Paket Eksplorasi Lengkap 3 Negara Asia',
-    image: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=700&q=80',
+    image: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=700&q=80&fm=webp',
     imageAlt: 'Paket Wisata 3 Negara',
     features: [
       'Kuala Lumpur, Genting, Johor, SG & Hat Yai',
@@ -81,7 +81,7 @@ export const packages: PackageItem[] = [
     duration: '3D2N / Custom',
     countries: '🇲🇾 Kuala Lumpur • Genting Highlands',
     title: 'Paket Corporate Gathering & Awarding Night',
-    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=700&q=80',
+    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=700&q=80&fm=webp',
     imageAlt: 'Corporate Gathering Malaysia Singapura',
     features: [
       'Gala Dinner & Ballroom Hotel Fasilitas Lengkap',
@@ -99,7 +99,7 @@ export const packages: PackageItem[] = [
     duration: 'Fleksibel',
     countries: '🇲🇾 Malaysia • 🇸🇬 Singapura VIP',
     title: 'Private Family Trip (MPV Mewah / Van Pribadi)',
-    image: 'https://images.unsplash.com/photo-1565967511849-76a60a516170?auto=format&fit=crop&w=700&q=80',
+    image: 'https://images.unsplash.com/photo-1565967511849-76a60a516170?auto=format&fit=crop&w=700&q=80&fm=webp',
     imageAlt: 'Private Trip Keluarga Singapura Malaysia',
     features: [
       'Tanpa Digabung Peserta Lain (100% Private)',
@@ -113,48 +113,48 @@ export const packages: PackageItem[] = [
 
 export const galleryItems: GalleryItem[] = [
   {
-    thumb: 'https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=800&q=80',
-    full: 'https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=1200&q=85',
+    thumb: 'https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=800&q=80&fm=webp',
+    full: 'https://images.unsplash.com/photo-1508062878650-88b52897f298?auto=format&fit=crop&w=1200&q=80&fm=webp',
     alt: 'Rombongan di Menara Petronas',
     location: 'Kuala Lumpur, Malaysia',
     title: 'PKL Internasional & Studi Banding – Petronas Twin Towers',
     caption: 'Dokumentasi Rombongan PKL Internasional di Menara Kembar Petronas, Kuala Lumpur'
   },
   {
-    thumb: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80',
-    full: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1200&q=85',
+    thumb: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80&fm=webp',
+    full: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1200&q=80&fm=webp',
     alt: 'Safari Edukasi MTsN 1 Kota Bima',
     location: 'Safari Edukasi 2026',
     title: 'Rombongan MTsN 1 Kota Bima – Kunjungan Pendidikan',
     caption: 'Safari Edukasi Rombongan Siswa & Guru MTsN 1 Kota Bima di Malaysia'
   },
   {
-    thumb: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=80',
-    full: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=1200&q=85',
+    thumb: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=80&fm=webp',
+    full: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=1200&q=80&fm=webp',
     alt: 'Masjid Putra Putrajaya',
     location: 'Putrajaya, Malaysia',
     title: 'Wisata Religi & Arsitektur Masjid Putra Putrajaya',
     caption: 'Kunjungan Rombongan ke Masjid Putra, Putrajaya & Dataran Merdeka Malaysia'
   },
   {
-    thumb: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80',
-    full: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=85',
+    thumb: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80&fm=webp',
+    full: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=80&fm=webp',
     alt: 'Merlion Park Singapura',
     location: 'Marina Bay, Singapura',
     title: 'City Tour Singapura – Merlion Park & Jewel Changi',
     caption: 'Eksplorasi Merlion Park & Gardens by the Bay Singapura'
   },
   {
-    thumb: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=800&q=80',
-    full: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=1200&q=85',
+    thumb: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=800&q=80&fm=webp',
+    full: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=1200&q=80&fm=webp',
     alt: 'Wisata Thailand',
     location: 'Hat Yai, Thailand',
     title: 'Eksplorasi Budaya & Pasar Terapung Thailand Selatan',
     caption: 'Wisata Budaya & Kuliner Halal di Hat Yai & Songkhla, Thailand'
   },
   {
-    thumb: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80',
-    full: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85',
+    thumb: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80&fm=webp',
+    full: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80&fm=webp',
     alt: 'Armada Bus Pariwisata Nyaman',
     location: 'Fasilitas VIP',
     title: 'Armada Bus Pariwisata Full AC & Tour Leader Berpengalaman',
